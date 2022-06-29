@@ -1,5 +1,8 @@
+import { ObjectId } from "mongoose";
 import { injectable } from "tsyringe";
 import { ChatRoom } from "../schemas/ChatRoom";
+
+type ChatRoomService = ChatRoom & {_id: ObjectId }
 
 @injectable()
 class CreateChatRoomService {
@@ -7,7 +10,7 @@ class CreateChatRoomService {
         const room = await ChatRoom.create({
             idUsers
         });
-        return room;
+        return room as unknown as ChatRoomService;
     }
 }
 export { CreateChatRoomService }
