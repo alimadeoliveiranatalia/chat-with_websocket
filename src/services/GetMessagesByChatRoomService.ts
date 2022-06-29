@@ -7,6 +7,8 @@ class GetMessagesByChatRoomService {
         const messages = await Message.find({
             roomId
         }).populate("to").exec();
+        
+        return messages;
     }
 }
 export { GetMessagesByChatRoomService }
